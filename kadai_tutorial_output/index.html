@@ -1,0 +1,555 @@
+<!-- DOCTYPE宣言を行ことで、index.htmlが「HTMLで記述されている」ことをブラウザに伝える -->
+<!DOCTYPE html>
+<!-- htmlは、htmlタグで囲まれた部分が「HTMLによる記述である」ことをブラウザに伝える -->
+<html>
+<!-- headは、タイトルや説明文など、Webページの各種設定を記述する -->
+  <head>
+   <!-- titleタグでWebページのタイトルを設定 -->
+   <title>SocialTech</title>
+   <!-- 文字コードの指定 -->
+   <meta charset="utf-8">
+   <!-- Webサイトの説明文「SocialTechはEdTech業界のリーディングカンパニーを目指します」を、metaタグのname属性で記述 -->
+   <meta name="description" content="SocialTechはEdTech業界のリーディングカンパニーを目指します。">
+   <!-- ビューポートは以下のように設定します。 -->
+   <!-- 幅（width）：device-widthを指定して、画面サイズに合わせていっぱいに広げる -->
+   <!-- 拡大率（initial-scale）：等倍（1.0）を指定して、拡大縮小を行わない -->
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- linkタグを記述して、style.cssを読み込む設定 -->
+   <link rel="stylesheet" href="style.css">
+  </head>
+ <!-- bodyは、実際にブラウザに表示される内容（記事など）を記述する -->
+
+  <body>
+   <!-- ヘッダー (headerタグをbodyタグ内に記述する) -->
+   <header>
+     <!-- ロゴ (imgタグを使ってヘッダーにロゴを表示します) -->
+     <a href="index.html" id="logo">
+       <img src="images/logo.png" alt="トップページに戻る">
+     </a>
+   
+      <!-- PC用ナビゲーション -->
+      <!-- ■navタグでナビゲーションを作成する■ -->
+      <!-- navタグの中にaタグを記述して、6つのナビゲーションメニューを作成します。
+       「MISSION」はmission.htmlに、「PRODUCT」はproduct.htmlにリンクさせます。
+        その他の「ABOUT US」「VISION」「COMPANY」「CONTACT」は同じページ内（index.html）に配置するセクションです -->
+      <!-- テキストには記載されていないclassを追加（二村さんからのアドバイスもあり）-->
+      <nav id="nav-pc">
+       <ul>
+         <li><a href="mission.html">MISSION</a></li>
+         <li><a href="product.html">PRODUCT</a></li>
+         <li><a href="index.html#aboutus">ABOUT US</a></li>
+         <li><a href="index.html#vision">VISION</a></li>
+         <li><a href="index.html#company">COMPANY</a></li>
+         <li><a href="index.html#contact">CONTACT</a></li>
+       </ul>
+      </nav>
+
+      <!-- スマホ用メニューボタン -->
+
+      <!-- ハンバーガーメニュー -->
+      <!-- ハンバーガーメニューとは、スマートフォンのときだけ画面の右上に表示される三本線のアイコンのことです。タップするとメニューの一覧が表示されます。-->
+      <!-- onclick属性 -->
+      <!-- onclickとは「クリック（タップ）したら～する」という動作をする属性です。
+      今回は「ハンバーガーメニューをクリックしたときにJavaScriptのプログラムを実行する」という使い方をします。-->
+      <!-- JavaScriptの記述箇所 -->
+      <!-- 以下のダブルクオーテーション（"）内がJavaScriptの記述箇所です。
+      本教材はHTML/CSSの教材なので、JavaScriptの記述箇所は深く考えずにコピー＆ペーストしてOKです。-->
+      <!-- onclick="document.getElementById('nav-sp').style.display = 'block';" -->
+      <!-- このJavaScriptのコードについて簡単に解説すると、「nav-spというidを持つ要素（今回の場合はスマートフォン用ナビゲーション）に対し、
+      クリック（タップ）時にdisplay: block;というスタイルを適用する」という意味です。-->
+      <!-- つまり、タップしたときに以下のようにdisplayプロパティがnoneからblockに切り替わり、非表示状態だった#nav-spが表示されます。-->
+
+      <!-- imgタグでハンバーガーメニューの画像を表示します。また、あとからスタイルを適用できるように、menu-spというidを設定しています。-->
+                    
+      <button id="menu-sp" onclick="document.getElementById('nav-sp').style.display = 'block'">
+        <img src="images/button-menu.png" alt="ナビゲーションを開く">
+      </button>
+
+      <!-- スマホ用ナビゲーション -->
+
+      <!-- ナビゲーション -->
+      <!-- スマートフォン用のナビゲーションを作成します。ハンバーガーメニューと同じように、ナビゲーションのハイパーリンクにもonclick属性を記述し、
+      JavaScriptのプログラムを呼び出します。-->
+      <div id="nav-sp">
+        <button id="close" onclick="document.getElementById('nav-sp').style.display = 'none'">
+          <img src="images/button-close.png" alt="ナビゲーションを閉じる">
+        </button>
+
+          <!-- JavaScriptのコード onclick="document.getElementById('nav-sp').style.display = 'none'"-->
+          <!-- JavaScriptのコードについて簡単に解説すると、「nav-spというidを持つ要素（今回の場合はスマートフォン用ナビゲーション）に対し、
+          クリック（タップ）時にdisplay: none;というスタイルを適用する」という意味です。-->
+          <!-- ハイパーリンクをタップしてページを移動するときにナビゲーションが表示されたままだと、メインビジュアルやセクションの上にナビゲーションが重なってしまいます。
+          よって、ここではハイパーリンクをタップしたときにナビゲーションを非表示にするプログラムを記述しています。 -->
+
+        <nav>
+          <ul>
+            <li>
+              <a id="logo-sp" href="index.html" onclick="document.getElementById('nav-sp').style.display = 'none'"><img src="images/logo-sp.png" alt="トップページに戻る"></a>
+            </li>
+            <li><a class="menu" href="mission.html" onclick="document.getElementById('nav-sp').style.display = 'none'">MISSION</a></li>
+            <li><a class="menu" href="product.html" onclick="document.getElementById('nav-sp').style.display = 'none'">PRODUCT</a></li>
+            <li><a class="menu" href="index.html#aboutus" onclick="document.getElementById('nav-sp').style.display = 'none'">ABOUT US</a></li>
+            <li><a class="menu" href="index.html#vision" onclick="document.getElementById('nav-sp').style.display = 'none'">VISION</a></li>
+            <li><a class="menu" href="index.html#company" onclick="document.getElementById('nav-sp').style.display = 'none'">COMPANY</a></li>
+            <li><a class="menu" href="index.html#contact" onclick="document.getElementById('nav-sp').style.display = 'none'">CONTACT</a></li>
+          </ul>
+        </nav>  
+        <div id="sns">
+          <a href="https://www.facebook.com/sejuku2013">
+            <img src="images/button-facebook.png" alt="Facebookのリンク">
+          </a>
+          <a href="https://twitter.com/samuraijuku">
+            <img src="images/button-twitter.png" alt="Twitterのリンク">
+          </a>
+          <a href="https://www.youtube.com/channel/UCCFOQO5aDK0xXam4cUQXT8g">
+            <img src="images/button-youtube.png" alt="YouTubeのリンク">
+          </a>
+        </div>
+      </div>
+   </header>
+
+    <!-- mainタグ：中身がメインコンテンツであることを表す -->
+    <main>
+      <!--articleタグ：中身が記事であることを表す -->
+      <article>
+        <!-- メインビジュアルのセクションを作る -->
+        <!-- メインビジュアル -->      
+        <!-- インビジュアルを表示する場所をsectionタグで確保します。このあとCSSでスタイルを適用するために、
+        idをmain-visualに設定しておきます。 -->
+        <section id="main-visual">
+          <!-- 青色の背景となるdivタグに加え、メッセージを表示するh1とpタグを記述します。
+          divタグはidにmain-messageを設定し、あとからCSSでスタイルを適用しやすいようにしておきます。-->
+          <!-- ■メッセージと画像を表示する■ -->
+          <!-- メッセージを表示する-->        
+          <div id="main-message">
+            <h1>WORLD PEACE</h1>
+            <p>IT教育で世界平和を実現する</p>
+          </div>
+          <!-- 画像を表示する -->
+          <img src="images/index/index-main.png" alt="PCの周りに集まる多国籍の仲間たち">
+        </section>
+
+        <!-- ミッション -->    
+        <section id="mission">
+          <h2 class="index-h2">MISSION</h2>
+          <div id="mission-flex">
+            <!-- セクション左側のコンテンツを作ろう -->
+            <!-- 画像は以下のファイルを相対パスで指定し、表示させます。 -->
+            <!-- imagesフォルダ > indexフォルダ > index-mission.png -->
+            <!-- 各種タグにはidとclassを設定して、CSSでスタイルを適用できるようにしておきます。 -->
+            <div>
+              <img id="mission-photo" src="images/index/index-mission.png" alt="屋外のベンチで写真を撮影する多国籍の仲間たち">
+              <h3>世界平和の実現</h3>
+              <p>人類の悲願である世界平和。世界平和を脅かす様々な社会問題を解決するためには、イノベーションをどんどん起こしていく必要があります。SocialTechは、プログラミング教育を通してイノベーターを輩出することで、世界平和という大きなテーマに挑んでいきます。</p>
+            </div>
+
+            <!-- セクション右側のコンテンツを作ろう -->
+            <!-- 画像は以下のファイルを相対パスで指定し、表示させます。 -->
+            <!-- imagesフォルダ > indexフォルダ > s2dgs.png -->
+            <div>
+              <img id="s2dgs" src="images/index/s2dgs.png" alt="S2DGs">
+              <h3>S2DGsの実現</h3>
+              <p>国連が掲げる「Sustainable Development Goals（持続可能な開発目標）」に含まれる17つのグローバル目標のうち、以下の5つの目標の実現をミッションとしてサービスを展開しています。</p>
+              <a href="mission.html">
+                <img src="images/button-more.png" alt="もっとみる">
+              </a>
+            </div>
+          </div>
+        </section>
+      
+        <!-- プロダクト -->
+        <section id="product">
+          <h2 class="index-h2">PRODUCT</h2>
+          <div class="product-flex">
+            <!-- セクション左側のコンテンツを作ろう -->
+            <div id="product-left">
+              <div>
+                <img class="product-photo" src="images/index/index-mantoman.png" alt="PCでコードを書く男性">
+                <div class="product-explain">
+                  <span>MAN TO MAN</span>
+                  <h3>プログラミング教育</h3>
+                  <p>2013年より日本で唯一の専属講師によるマンツーマンのプログラミングレッスンを開始。AI/人工知能やウェブデザインの学習も可能です。</p>
+                </div>
+              </div>
+              <div>
+                <img class="product-photo" src="images/index/index-career.png" alt="笑顔で話し合う2人の男性">
+                <div class="product-explain">
+                  <span>CAREER</span>
+                  <h3>人材紹介事業</h3>
+                  <p>エンジニアへの転職に特化した履歴書や職務経歴書のアドバイスや面接対策を行い、豊富な求人の中から最適なキャリア選択を支援します。</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- セクション右側のコンテンツを作ろう -->
+            <div id="product-right">
+              <div>
+                <img class="product-photo" src="images/index/index-media.png" alt="スマートフォンを操作する人">
+                <div class="product-explain">
+                  <span>MEDIA</span>
+                  <h3>プログラミング学習メディア</h3>
+                  <p>月間200万人に読まれる日本最大級のプログラミング学習サイト「SocialTech Blog」やYouTubeチャネルにて学習情報を発信しています。</p>
+                </div>
+              </div>
+              <div>
+                <img class="product-photo" src="images/index/index-b2b.png" alt="講演中の男性とそれを聴く人々">
+                <div class="product-explain">
+                  <span>B2B</span>
+                  <h3>法人研修事業</h3>
+                  <p>社員のスキルアップ・資格取得・福利厚生を目的としたプログラミング法人研修。貴社の事業モデルに合わせた研修内容の提案を致します。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="product-more">
+            <a href="product.html">
+              <img src="images/button-more.png" alt="もっとみる">
+            </a>
+          </div>
+        </section>
+
+        <!-- ABOUT US -->
+        <!-- sectionタグを記述して、ABOUT USのセクションを表示するエリアを確保します。
+         また、sectionタグの中にdivタグを記述して、表を表示するエリアも確保します。-->
+        <section id="aboutus">
+          <h2 class="index-h2">ABOUT US</h2>
+          <h3>3つの組織文化</h3>
+
+          <!-- tableタグで表を作ろう -->
+          <div>
+            <table class="culture-table">
+              <tr>
+                <td class="culture-num">01</td>
+                <th><span class="culture-en">FLEXIBLE</span><br>フレキシブル</th>
+              </tr>
+              <tr>
+                <td>
+                  <!--空のセル-->
+                </td>
+                <td class="culture-description">リモートワーク、フルフレックス、副業推奨など1人1人が最大限のパフォーマンスを発揮できる柔軟な働き方を促進しています。</td>
+              </tr>
+              <tr>
+                <td class="culture-num">02</td>
+                <th><span class="culture-en">TEAL</span><br>ティール</th>
+              </tr>
+              <tr>
+                <td>
+                  <!--空のセル-->
+                </td>
+                <td class="culture-description">会社全体を1つの生命体として捉え、お互いが深く結びついた一階層型 組織として部署・チーム関係なく課題解決をできる組織を目指しています。</td>
+              </tr>
+              <tr>
+                <td class="culture-num">03</td>
+                <th><span class="culture-en">SELF REALIZATION</span><br>自己実現</th>
+              </tr>
+              <tr>
+                <td>
+                  <!--空のセル-->
+                </td>
+                <td class="culture-description">クオーター毎に経営・部署・個人ごとにOKRを設定し個人のキャリアと 会社の目指す方向の軌道修正を行っております。</td>
+              </tr>
+            </table>
+
+             <!-- imgタグを記述して、ABOUT USセクションに2枚の画像を表示させます。それぞれのimgタグにはclassを設定し、あとからCSSでスタイルを適用できるようにしておきます。-->
+            <img class="culture-img" src="images/index/index-aboutus1.png" alt="笑顔で話し合う2人の女性">
+          </div>
+          <img class="culture-img2" src="images/index/index-aboutus2.png" alt="笑顔で話し合う3人の男女">
+        </section>
+
+        <!-- VISION -->
+        <!-- VISIONのセクションを作ろう -->
+        <!-- ectionタグを記述して、VISIONのセクションを表示するエリアを確保します。
+        また、sectionタグの中にセクション全体の見出しやdivタグを記述して、さらにエリアを分けます。-->
+        <section id="vision">
+          <h2 class="index-h2">VISION</h2>
+          <h3>7つの行動指針</h3>
+          <!-- 1つ目の「行動指針」を作ろう -->
+          <!-- divタグで「行動指針」の画像やテキストを一つ一つグループ化します。
+          7つすべての「行動指針」に共通のスタイルを適用できるように、これらのdiv要素にはvision-boxというclassを設定します。-->
+          <div>
+            <div class="vision-box">
+              <img src="images/index/vision-01.png" alt="01">
+              <div>
+                <h4>CUSTOMER IS BOSS</h4>
+                <h5>あなたのボスは顧客である</h5>
+                <p>私たちは常にお客様志向で行動し、お客様を喜ばせ、期待値を超えた感動を提供することを大切にします。</p>
+              </div>
+            </div>
+              
+            <!-- 2つ目の「行動指針」を作ろう -->
+            <!-- divタグで「行動指針」の画像やテキストを一つ一つグループ化します。
+            7つすべての「行動指針」に共通のスタイルを適用できるように、これらのdiv要素にはvision-boxというclassを設定します。-->
+            <div class="vision-box">
+              <img src="images/index/vision-02.png" alt="02">
+              <div>
+                <h4>MOVE FAST</h4>
+                <h5>早さは価値</h5>
+                <p>素早く試し、素早く実行することで新しい気付きや発見を見つけていきます。</p>
+              </div>
+            </div>
+          
+            <!-- 3つ目の「行動指針」を作ろう -->
+            <!-- divタグで「行動指針」の画像やテキストを一つ一つグループ化します。
+             7つすべての「行動指針」に共通のスタイルを適用できるように、これらのdiv要素にはvision-boxというclassを設定します。-->
+            <div class="vision-box">
+              <img src="images/index/vision-03.png" alt="03">
+              <div>
+                <h4>IMPACT DRIVEN</h4>
+                <h5>作業するのは仕事ではない</h5>
+                <p>問題から考え、成果とは何かを考え続け、インパクトのある成果を生むために仕事をしていきます。</p>
+              </div>
+            </div>
+
+            <!-- 4つ目の「行動指針」を作ろう -->
+            <!-- divタグで「行動指針」の画像やテキストを一つ一つグループ化します。
+            7つすべての「行動指針」に共通のスタイルを適用できるように、これらのdiv要素にはvision-boxというclassを設定します。-->
+            <div class="vision-box">
+              <img src="images/index//vision-04.png" alt="04">
+              <div>
+                <h4>SAVE TIME, SAVE MONEY</h4>
+                <h5>浪費は命取りになる</h5>
+                <p>少ないコストでできる方法を考えます。お金だけでなく、人の時間をいただいている自覚を持ち、あらゆるリソースを有意義に活用します。</p>
+              </div>
+            </div>
+
+            <!-- 5つ目の「行動指針」を作ろう -->
+            <!-- divタグで「行動指針」の画像やテキストを一つ一つグループ化します。
+            7つすべての「行動指針」に共通のスタイルを適用できるように、これらのdiv要素にはvision-boxというclassを設定します。-->
+            <div class="vision-box">
+              <img src="images/index/vision-05.png" alt="05">
+              <div>
+                <h4>BE GENTLE</h4>
+                <h5>「優しくない」をなくす</h5>
+                <p>社会をすこしずつ優しくしていきます。自分、家族、同僚、顧客、他人、全ての人に優しくいることを心がけます。</p>
+              </div>
+            </div>
+
+            <!-- 6つ目の「行動指針」を作ろう -->
+            <!-- divタグで「行動指針」の画像やテキストを一つ一つグループ化します。
+            7つすべての「行動指針」に共通のスタイルを適用できるように、これらのdiv要素にはvision-boxというclassを設定します。-->
+            <div class="vision-box">
+              <img src="images/index/vision-06.png" alt="06">
+              <div>
+                <h4>ABC</h4>
+                <h5>当たり前の事をバカにせずにちゃんとやる</h5>
+                <p>礼儀、健康、嘘をつかない。当たり前の事が出来ているかを常に自問し、当たり前の基準を高く持って行動します。</p>
+              </div>
+            </div>
+            
+            <!-- 7つ目の「行動指針」を作ろう -->
+            <!-- divタグで「行動指針」の画像やテキストを一つ一つグループ化します。
+            7つすべての「行動指針」に共通のスタイルを適用できるように、これらのdiv要素にはvision-boxというclassを設定します。-->
+            <div class="vision-box">
+              <img src="images/index/vision-07.png" alt="07">
+              <div>
+                <h4>ZTI</h4>
+                <h5>絶対的当事者意識</h5>
+                <p>役職や役割に応じた相対的な当事者意識ではなく、自身の身で起こることすべてに対する絶対的な当事者意識を持ちます。</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- COMPANY -->
+        <!-- sectionタグを記述する -->
+        <!-- sectionタグを記述して、COMPANYのセクションを表示するエリアを確保します。
+        また、h2タグとh3タグを記述して、セクション全体の見出しを作成します。-->
+        <section id="company">
+          <h2 class="index-h2">COMPANY</h2>
+          <h3>会社概要</h3>
+          <!-- tableタグで「会社概要」の表を作成する -->
+          <!-- 「会社概要」はtableタグを使って表で作成します。
+          左側の列には「会社名」や「所在地」などの見出し、右側の列にはその内容を記述します。-->
+          <table id="company-table">
+            <tr>
+              <th class="tableheader tableheader-first">会社名</th>
+              <td class="cell cell-first">株式会社SocialTech</td>
+            </tr>
+            <tr>
+              <th class="tableheader">所在地</th>
+              <td class="cell">〒101-0022 東京都千代田区神田練塀町300番地 住友不動産秋葉原駅前ビル5F<br>JR「秋葉原駅」より徒歩1分</td>
+            </tr>
+            <tr>
+              <th class="tableheader">代表者</th>
+              <td class="cell">代表取締役 田中 太郎</td>
+            </tr>
+            <tr>
+              <th class="tableheader">設立</th>
+              <td class="cell">2015年3月19日</td>
+            </tr>
+          </table>
+            
+          <!-- Googleマップのページで埋め込み用のiframeタグを取得する -->
+          <!-- 取得したiframeタグを貼り付けて、Googleマップを埋め込む -->
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.0688551336807!2d139.7720776771055!3d35.69992317258124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188fee13660e23%3A0x77137876edf742ac!2z5L2P5Y-L5LiN5YuV55Sj56eL6JGJ5Y6f6aeF5YmN44OT44Or!5e0!3m2!1sja!2sjp!4v1704858013291!5m2!1sja!2sjp" style="border: 0" allowfullscreen="" loading="lazy"></iframe>
+        </section>
+
+      <!-- お問い合わせフォーム -->
+
+      <!-- セクション内の区切りを作ろう -->
+        <!-- sectionタグを記述して、CONTACTのセクションを表示するエリアを確保します。
+        sectionタグの中にはセクション全体の見出し（h2、h3）を記述します。 -->
+        <!-- sectionタグの中にformタグを記述して、各種フォームを作成する準備を整えます。-->
+        <section id="contact">
+          <h2 class="index-h2">CONTACT</h2>
+          <h3>お問い合わせ</h3>
+          <!-- formタグの中に各種フォームを記述する --> 
+          <form>
+            <!-- テキストボックス（input type="text"）-->
+            <!-- お問い合わせフォームの「お名前」「フリガナ」「メールアドレス」「電話番号」は、テキストボックス（input type="text"）で入力欄を作成します。-->
+            <!-- 各フォームはlabelタグでラベル（項目名）を表示し、入力が必要な項目にはspanタグで「必須」という文字を表示します。-->
+            <div>
+              <div class="contact-heading">
+                <label class="contact-label">お名前<span class="contact-span">必須</span></label>
+              </div>
+              <div>
+                <input type="text" name="name" placeholder="入力してください" class="contact-textbox">
+              </div>
+            </div>
+            <div>
+              <div class="contact-heading">
+                <label class="contact-label">フリガナ<span class="contact-span">必須</span></label>
+              </div>
+              <div>
+                <input type="text" name="hurigana" placeholder="入力してください" class="contact-textbox">
+              </div>
+            </div>
+            <div>
+              <div class="contact-heading">
+                <label class="contact-label">メールアドレス<span class="contact-span">必須</span></label>
+              </div>
+              <div>
+                <input type="text" name="email" placeholder="入力してください" class="contact-textbox">
+              </div>
+            </div>
+            <div>
+              <div class="contact-heading">
+                <label class="contact-label">電話番号</label>
+              </div>
+              <div>
+                <input type="text" name="tel" placeholder="入力してください" class="contact-textbox">
+              </div>
+            </div>
+
+            <!-- テキストエリア（textarea）-->
+            <!--「お問い合わせ内容」の入力欄をテキストエリア（textarea）で作成します。
+            テキストエリアはテキストボックスとは異なり、複数行の文章を入力できます。-->
+            <div>
+              <div class="contact-heading">
+                <label class="contact-label">お問い合わせ内容<span class="contact-span">必須</span></label>
+              </div>
+              <div>
+                <textarea class="contact-textarea" placeholder="入力してください" name="message"></textarea>
+              </div>
+            </div>
+        
+            <!-- ラジオボタン（input type="radio"）-->
+
+            <!-- チェックボックス（input type="checkbox"）-->
+            <!-- 連絡先を選択するラジオボタン（input type="radio"）を作成します。
+            ラジオボタンは複数の選択肢の中から1つだけ選択できるタイプのフォームです。
+            name属性を3つとも統一（今回はcontactを指定）することで、3つの中から1つだけ選択できるようになります。-->
+            <div>
+              <div class="contact-heading">
+                <label class="contact-label">ご希望の連絡先<span class="contact-span">必須</span></label>
+              </div>
+            </div>
+            <div>
+                <input class="radiobutton" type="radio" value="tel" name="contact" checked><label>お電話</label>
+                <input class="radiobutton" type="radio" value="mail" name="contact"><label>メール</label>
+                <input class="radiobutton" type="radio" value="both" name="contact"><label>どちらでも</label>
+              </div>
+            </div>
+            <!--「個人情報の取り扱い」に対して同意を求めるチェックボックス（input type="checkbox"）を作成します。-->
+            <!--「個人情報の取り扱い」は長文なので、detailsタグを使って表示・非表示を切り替えられるようにします。-->
+            <div>
+              <div class="contact-heading">
+                <label class="contact-label">個人情報の取り扱い</label>
+              </div>
+              <div>
+                <details>
+                  <summary>お問い合わせフォームの個人情報の取り扱いについて</summary>
+                  <div>
+                    <dl>
+                      <dt>１．組織の名称又は氏名</dt>
+                      <dd>株式会社SocialTech</dd>
+                      <dt>２．個人情報保護管理者（若しくはその代理人）の氏名又は職名、所属及び連絡先</dt>
+                      <dd>
+                        <p>鈴木 一郎 コーポレート部</p>
+                        <p>メールアドレス：samurai@example.com</p>
+                        <p>TEL：03-1234-5678</p>
+                      </dd>
+                      <dt>３．個人情報の利用目的</dt>
+                      <dd>
+                        <ul>
+                          <li>・本サービス及び本サービスに関連する情報の提供又はそれらに関する連絡のため</li>
+                          <li>・ユーザーの本人確認のため</li>
+                          <li>・当社サービスのご案内のため</li>
+                          <li>・当社の商品等の広告または宣伝（電子メールによるものを含むものとします。）</li>
+                        </ul>
+                      </dd>
+                      <dt>４．個人情報の取り扱い業務の委託</dt>
+                      <dd>個人情報の取扱業務の全部または一部を外部に業務委託する場合があります。その際、弊社は、個人情報を適切に保護できる管理体制を敷き実行していることを条件として委託先を厳選したうえで、機密保持契約を委託先と締結し、お客様の個人情報を厳密に管理させます。</dd>
+                      <dt>５．個人情報の開示等の請求</dt>
+                      <dd>
+                        お客様は、弊社に対してご自身の個人情報の開示等（利用目的の通知、開示、内容の訂正・追加・削除、利用の停止または消去、第三者への提供の停止）に関して、当社問合わせ窓口に申し出ることができます。<br>
+                        その際、弊社はお客様ご本人を確認させていただいたうえで、合理的な期間内に対応いたします。<br>
+                        なお、個人情報に関する弊社問合わせ先は、次の通りです。
+                      </dd>
+                      <dd>
+                        <p>株式会社SocialTech　個人情報問合せ窓口</p>
+                        <p>〒150-0043　東京都千代田区神田練塀町300番地 住友不動産秋葉原駅前ビル5F</p>
+                        <p>メールアドレス：samurai@example.com　TEL：03-1234-5678</p>
+                      </dd>
+
+                      <dt>６．個人情報を提供されることの任意性について</dt>
+                      <dd>お客様がご自身の個人情報を弊社に提供されるか否かは、お客様のご判断によりますが、もしご提供されない場合には、適切なサービスが提供できない場合がありますので予めご了承ください。</dd>
+                    </dl>
+                  </div>
+                </details>
+                <input type="checkbox" name="agree">
+                <span>個人情報の取り扱いについてご同意いただける場合は、チェックをしてください。</span>
+              </div>
+            </div>
+
+            <!-- 送信ボタン（input type="image"）-->
+            <!--最後に送信ボタンを画像で作成します。
+            基礎編の7章ではinput type="submit"で送信ボタンを作成しましたが、input type="image"にすれば画像で送信ボタンを作成できます。
+            その場合はvalue="Submit"を削除して、src属性に画像のパスを指定します。-->
+            <input type="image" src="images/button-submit.png" alt="送信する">
+          </form>
+        </section>
+      </article>
+    </main>
+
+    <!-- フッターを作ろう -->
+
+    <!-- footerタグでフッターを作成しよう -->
+    <!-- footerタグを記述してフッターを作成し、その中にdivタグとロゴを表示するためのimgタグを記述します。なお、フッターは記事ではないのでarticleタグの外に記述します。-->
+    <footer>
+      <div id="footer-logo">
+        <img src="images/logo-sp.png" alt="SocialTech">
+      </div>
+      <div id="footer-link">
+        <a href="mission.html">MISSION</a>
+        <a href="product.html">PRODUCT</a>
+        <a href="index.html#aboutus">ABOUT US</a>
+        <a href="index.html#vision">VISION</a>
+        <a href="index.html#company">COMPANY</a>
+        <a href="index.html#contact">CONTACT</a>
+      </div>
+
+       <!-- aタグでSNSのリンクを作成しよう -->
+       <div id="sns-footer">
+        <div class="sns-btns">
+          <a href="https://www.facebook.com/sejuku2013"><img src="images/button-facebook.png" alt="Facebookのリンク"></a>
+          <a href="https://twitter.com/samuraijuku"><img src="images/button-twitter.png" alt="Twitterのリンク"></a>
+          <a href="https://www.youtube.com/channel/UCCFOQO5aDK0xXam4cUQXT8g"><img src="images/button-youtube.png" alt="YouTubeのリンク"></a>
+        </div>
+        <!-- pタグでコピーライトを作成しよう -->
+        <p id="copyright">&copy;2021 SocialTech, Inc. All Rights Reserved.</p>
+       </div>
+    </footer>
+    
+  </body>
+</html>
